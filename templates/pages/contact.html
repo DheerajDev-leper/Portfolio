@@ -31,7 +31,6 @@
     }
 
     /* Left sidebar */
-    .contact-sidebar {}
     .contact-intro {
       font-size: .975rem; color: var(--text-muted);
       line-height: 1.8; margin-bottom: 2.5rem;
@@ -57,7 +56,6 @@
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
     }
-    .contact-method-body {}
     .contact-method-label { font-size: .72rem; color: var(--text-dim); letter-spacing: .1em; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: .2rem; }
     .contact-method-value { font-size: .9rem; font-weight: 500; color: var(--text); }
 
@@ -80,10 +78,7 @@
       border-radius: var(--radius-lg);
       padding: clamp(1.5rem, 3vw, 2.5rem);
     }
-    .contact-form-title {
-      font-family: var(--font-display); font-size: 1.8rem;
-      margin-bottom: .5rem;
-    }
+    .contact-form-title { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: .5rem; }
     .contact-form-sub { font-size: .875rem; color: var(--text-muted); margin-bottom: 2rem; }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -130,13 +125,34 @@
     .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
     .form-note { font-size: .78rem; color: var(--text-dim); }
 
-    /* Success message */
+    /* Alert banners */
+    .alert {
+      padding: .85rem 1.2rem;
+      border-radius: var(--radius);
+      font-size: .88rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .alert-success {
+      background: rgba(74,222,128,.08);
+      border: 1px solid rgba(74,222,128,.3);
+      color: #4ade80;
+    }
+    .alert-error {
+      background: rgba(248,113,113,.08);
+      border: 1px solid rgba(248,113,113,.3);
+      color: #f87171;
+    }
+
+    /* Success state (full card replacement) */
     .form-success {
       display: none;
       text-align: center;
       padding: 3rem;
     }
-    .form-success svg { color: var(--accent); margin: 0 auto 1rem; }
+    .form-success svg { color: var(--accent); margin: 0 auto 1rem; display: block; }
     .form-success h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: .5rem; }
     .form-success p { color: var(--text-muted); font-size: .95rem; }
 
@@ -199,13 +215,13 @@
           </p>
 
           <div class="contact-methods">
-            <a href="mailto:dheerajmalviya@email.com" class="contact-method">
+            <a href="mailto:dheerajmalvi9322@gmail.com" class="contact-method">
               <div class="contact-method-icon">
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
               </div>
               <div class="contact-method-body">
                 <div class="contact-method-label">Email</div>
-                <div class="contact-method-value">dheerajmalviya@email.com</div>
+                <div class="contact-method-value">dheerajmalvi9322@gmail.com</div>
               </div>
             </a>
             <a href="https://github.com/DheerajDev-leper" target="_blank" rel="noopener" class="contact-method">
@@ -244,66 +260,95 @@
 
         <!-- Contact Form -->
         <div class="contact-form-card animate-fade-up anim-delay-2">
-          <div id="formContent">
-            <h2 class="contact-form-title">Send a Message</h2>
-            <p class="contact-form-sub">I'll get back to you as soon as possible.</p>
 
-            <div class="contact-form-fields">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="fname">First Name</label>
-                  <input type="text" id="fname" class="form-control" placeholder="John" />
-                </div>
-                <div class="form-group">
-                  <label for="lname">Last Name</label>
-                  <input type="text" id="lname" class="form-control" placeholder="Doe" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" class="form-control" placeholder="john@example.com" />
-              </div>
-
-              <div class="form-group">
-                <label>I'm reaching out about</label>
-                <div class="subject-options">
-                  <button type="button" class="subject-chip" data-val="Internship">💼 Internship</button>
-                  <button type="button" class="subject-chip" data-val="Project Collaboration">🤝 Collaboration</button>
-                  <button type="button" class="subject-chip" data-val="Job Opportunity">🚀 Job Opportunity</button>
-                  <button type="button" class="subject-chip" data-val="General Inquiry">💬 General</button>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" class="form-control" placeholder="What's this about?" />
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" class="form-control" placeholder="Tell me about your project, opportunity, or question…"></textarea>
-              </div>
-
-              <div class="form-submit">
-                <button type="button" class="btn-submit" id="sendBtn">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                  Send Message
-                </button>
-                <span class="form-note">No spam, I promise 🙂</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Success state -->
-          <div class="form-success" id="formSuccess">
+          <!-- Success state: shown when mail sent successfully -->
+          {% if result == 'success' %}
+          <div class="form-success" style="display:block">
             <svg width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             <h3>Message Sent!</h3>
             <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
           </div>
-        </div>
+
+          {% else %}
+          <!-- Form state: shown by default or on error -->
+          <div id="formContent">
+            <h2 class="contact-form-title">Send a Message</h2>
+            <p class="contact-form-sub">I'll get back to you as soon as possible.</p>
+
+            <!-- Error / validation alert -->
+            {% if result == 'error' %}
+            <div class="alert alert-error">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+              {{ message }}
+            </div>
+            {% endif %}
+
+            <!-- ✅ FIX 1: method="POST" + action URL + csrf_token -->
+            <form method="POST" action="{% url 'contact' %}">
+              {% csrf_token %}
+
+              <div class="contact-form-fields">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <!-- ✅ FIX 2: preserve entered values on error -->
+                    <input type="text" id="fname" name="fname" class="form-control"
+                           placeholder="John" value="{{ request.POST.fname }}" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname" class="form-control"
+                           placeholder="Doe" value="{{ request.POST.lname }}" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" class="form-control"
+                         placeholder="john@example.com" value="{{ request.POST.email }}" required />
+                </div>
+
+                <div class="form-group">
+                  <label>I'm reaching out about</label>
+                  <div class="subject-options">
+                    <button type="button" class="subject-chip" data-val="Internship">💼 Internship</button>
+                    <button type="button" class="subject-chip" data-val="Project Collaboration">🤝 Collaboration</button>
+                    <button type="button" class="subject-chip" data-val="Job Opportunity">🚀 Job Opportunity</button>
+                    <button type="button" class="subject-chip" data-val="General Inquiry">💬 General</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input type="text" id="subject" name="subject" class="form-control"
+                         placeholder="What's this about?" value="{{ request.POST.subject }}" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" class="form-control"
+                            placeholder="Tell me about your project, opportunity, or question…"
+                            required>{{ request.POST.message }}</textarea>
+                </div>
+
+                <div class="form-submit">
+                  <button type="submit" class="btn-submit" id="sendBtn">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                    Send Message
+                  </button>
+                  <span class="form-note">No spam, I promise 🙂</span>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          {% endif %}
+
+        </div><!-- /.contact-form-card -->
 
       </div>
     </div>
@@ -315,54 +360,25 @@
 {% include 'includes/footer.html' %}
 
 <script>
-  /* Subject chips */
+  // Subject chip selection — fills the subject input
   document.querySelectorAll('.subject-chip').forEach(chip => {
     chip.addEventListener('click', () => {
       document.querySelectorAll('.subject-chip').forEach(c => c.classList.remove('selected'));
       chip.classList.add('selected');
-      document.getElementById('subject').value = chip.dataset.val;
+      const subjectInput = document.getElementById('subject');
+      if (subjectInput) subjectInput.value = chip.dataset.val;
     });
   });
 
-  /* Form submit — connects to your backend endpoint */
-  document.getElementById('sendBtn').addEventListener('click', async () => {
-    const btn = document.getElementById('sendBtn');
-    const fname   = document.getElementById('fname').value.trim();
-    const lname   = document.getElementById('lname').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!fname || !email || !message) {
-      alert('Please fill in your name, email, and message.');
-      return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-
-    try {
-      /* ---- Replace with your actual backend endpoint ---- */
-      const res = await fetch('/api/contact/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ first_name: fname, last_name: lname, email, subject, message }),
+  // Restore selected chip on page reload after error
+  (function () {
+    const subjectVal = document.getElementById('subject')?.value;
+    if (subjectVal) {
+      document.querySelectorAll('.subject-chip').forEach(chip => {
+        if (chip.dataset.val === subjectVal) chip.classList.add('selected');
       });
-
-      if (res.ok) {
-        document.getElementById('formContent').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      } else {
-        throw new Error('Server error');
-      }
-    } catch (err) {
-      /* Fallback: mailto link */
-      const mailto = `mailto:dheerajmalviya@email.com?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${fname} ${lname}\nEmail: ${email}\n\n${message}`)}`;
-      window.location.href = mailto;
-      btn.disabled = false;
-      btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Send Message`;
     }
-  });
+  })();
 </script>
 
 {% endblock %}
