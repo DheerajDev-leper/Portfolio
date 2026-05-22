@@ -126,11 +126,7 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'your-app-name.onrender.com'
-]
+ALLOWED_HOSTS = ['*']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
