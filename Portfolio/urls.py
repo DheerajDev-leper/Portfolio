@@ -14,6 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+"""
+URL configuration for Portfolio project.
+
+Now a single-page app — only two routes needed:
+  /          → serves index.html (the full SPA)
+  /contact/  → AJAX endpoint that handles form POST + sends email
+  /admin/    → Django admin (always keep this)
+"""
 from django.contrib import admin
 from django.urls import path
 from . import views
@@ -21,8 +29,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('about/', views.about, name='about'),
-    path('projects/', views.projects, name='projects'),
     path('contact/', views.contact, name='contact'),
-    path('skills/', views.skills, name='skills'),
 ]
