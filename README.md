@@ -146,6 +146,4 @@ The portfolio includes a downloadable and viewable PDF resume available directly
 * LinkedIn: https://www.linkedin.com/in/dheeraj-malviya-coder25/
 * Email: [dheerajsmalviya@gmail.com](mailto:dheerajsmalviya@gmail.com)
 
-## 📜 License
 
-This project is open source and available under the MIT License.
