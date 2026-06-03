@@ -82,19 +82,33 @@ const PROJECTS = [
     gh: 'https://github.com/DheerajDev-leper/Clothing',
     live: null
   },
+
+  {
+    n: 'Portfolio Website',
+    yr: '2026',
+    cat: 'web',
+    feat: true,
+    d: 'Personal portfolio website showcasing projects, skills, and experience with a modern design and responsive layout.',
+    tags: ['HTML', 'CSS', 'JavaScript','Django'],
+    gh: 'https://github.com/DheerajDev-leper/Portfolio',
+    live: null
+  },
 ];
 
 const MARQUEE=['Python','Django','React.js','JavaScript','REST APIs','Git','Linux','Docker','Tailwind','Bootstrap','AWS'];
 
-/* ─── CURSOR ─── */
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.chip,.sk-card,.comp-card,.pc,.cl,.soc,.learn-item,.tl-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('link-hover'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('link-hover'));
-});
+/* ─── CURSOR (pointer devices only) ─── */
+const isTouchDevice = window.matchMedia('(pointer:coarse)').matches;
+if(!isTouchDevice){
+  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+  (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+  document.querySelectorAll('a,button,.chip,.sk-card,.comp-card,.pc,.cl,.soc,.learn-item,.tl-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('link-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('link-hover'));
+  });
+}
 
 /* ─── THEME ─── */
 const html=document.documentElement;
@@ -110,13 +124,17 @@ document.getElementById('themeBtn').addEventListener('click',()=>{
 const nav=document.getElementById('nav');
 const navAs=document.querySelectorAll('.nav-a');
 const sections=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{
+
+function updateNav(){
   nav.classList.toggle('scrolled',window.scrollY>20);
   document.getElementById('btt').classList.toggle('on',window.scrollY>400);
   let cur2='';
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur2=s.id});
   navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur2));
-},{passive:true});
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+/* Run once on load so active state & background are correct immediately */
+updateNav();
 document.getElementById('burger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
 navAs.forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 document.getElementById('btt').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));

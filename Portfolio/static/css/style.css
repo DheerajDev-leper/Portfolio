@@ -26,20 +26,28 @@
 }
 
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;cursor:none;transition:background .4s,color .4s}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;transition:background .4s,color .4s}
 a{color:inherit;text-decoration:none}
-button{cursor:none;border:none;background:none;font-family:inherit;color:inherit}
+button{border:none;background:none;font-family:inherit;color:inherit}
+/* Custom cursor — pointer devices only */
+@media(pointer:fine){
+  body{cursor:none}
+  button{cursor:none}
+}
 ::selection{background:var(--accent);color:#fff}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--ink);border-radius:2px}
 
 /* ── CURSOR ── */
-#cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-radius .3s,background .2s;will-change:left,top}
-#cur-ring{position:fixed;width:38px;height:38px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,opacity .3s;opacity:.6;will-change:left,top}
-body.link-hover #cur{width:52px;height:52px;border-radius:6px;mix-blend-mode:multiply}
-[data-theme="dark"] body.link-hover #cur{mix-blend-mode:screen}
-body.link-hover #cur-ring{opacity:0;width:0;height:0}
+#cur,#cur-ring{display:none} /* hidden by default; shown only on pointer:fine */
+@media(pointer:fine){
+  #cur{display:block;position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),border-radius .3s,background .2s;will-change:left,top}
+  #cur-ring{display:block;position:fixed;width:38px;height:38px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,opacity .3s;opacity:.6;will-change:left,top}
+  body.link-hover #cur{width:52px;height:52px;border-radius:6px;mix-blend-mode:multiply}
+  [data-theme="dark"] body.link-hover #cur{mix-blend-mode:screen}
+  body.link-hover #cur-ring{opacity:0;width:0;height:0}
+}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,4vw,3.5rem);transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
@@ -411,8 +419,37 @@ footer{background:var(--ink);color:var(--bg);padding:2rem clamp(1.5rem,5vw,4rem)
   .proj-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
+  /* Nav always has background on mobile — no transparent phase */
+  nav{background:var(--nav-bg);border-color:var(--border);backdrop-filter:blur(20px) saturate(1.5)}
   .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;top:var(--nav);background:var(--nav-bg);padding:2rem;z-index:190;backdrop-filter:blur(20px)}
+  /* Mobile menu: slides down from nav, doesn't cover the whole screen edge-to-edge — stays below nav */
+  .nav-links.open{
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  top:var(--nav);
+  left:0;
+  right:0;
+  bottom:0;
+  height:calc(100dvh - var(--nav));
+  background:var(--nav-bg);
+  -webkit-backdrop-filter:blur(20px) saturate(1.5);
+  backdrop-filter:blur(20px) saturate(1.5);
+  padding:1.5rem;
+  z-index:190;
+  border-top:1px solid var(--border);
+  gap:.25rem;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+  /* Make nav links bigger & easier to tap on mobile */
+  .nav-links.open .nav-a{
+    font-size:.85rem;
+    padding:.9rem 1rem;
+    border-radius:8px;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-links.open .nav-a:last-child{border-bottom:none}
   .nav-burger{display:flex}
   .nav-cta{display:none}
   .proj-grid{grid-template-columns:1fr}
