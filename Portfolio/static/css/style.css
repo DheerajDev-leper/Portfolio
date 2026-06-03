@@ -33,6 +33,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 @media(pointer:fine){
   body{cursor:none}
   button{cursor:none}
+  .pc-links a{cursor:none}
 }
 ::selection{background:var(--accent);color:#fff}
 ::-webkit-scrollbar{width:3px}
@@ -310,8 +311,7 @@ nav.scrolled{background:var(--nav-bg);border-color:var(--border);backdrop-filter
 /* Mosaic grid */
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .pc{background:var(--bg);padding:2rem;transition:background .2s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.pc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,71,255,.04),transparent);opacity:0;transition:opacity .3s}
-.pc:hover{background:var(--bg2)}
+.pc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,71,255,.04),transparent);opacity:0;transition:opacity .3s;pointer-events:none}.pc:hover{background:var(--bg2)}
 .pc:hover::before{opacity:1}
 .pc-accent{position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--accent2);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
 .pc:hover .pc-accent{transform:scaleX(1)}
@@ -320,8 +320,8 @@ nav.scrolled{background:var(--nav-bg);border-color:var(--border);backdrop-filter
 .pc-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
 .pc-ico{width:38px;height:38px;background:rgba(0,71,255,.08);border:1px solid rgba(0,71,255,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--accent2);flex-shrink:0}
 .pc-yr{font-family:var(--mono);font-size:.65rem;color:var(--dim)}
-.pc-links{display:flex;gap:.35rem}
-.pc-links a{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:5px;color:var(--dim);transition:color .2s,border-color .2s}
+.pc-links{display:flex;gap:.35rem;position:relative;z-index:2}
+.pc-links a{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:5px;color:var(--dim);transition:color .2s,border-color .2s;position:relative;z-index:2;cursor:pointer}
 .pc-links a:hover{color:var(--accent2);border-color:var(--accent2)}
 .pc-name{font-size:1rem;font-weight:600;margin-bottom:.5rem}
 .pc-desc{font-size:.84rem;color:var(--muted);line-height:1.7;margin-bottom:1.25rem;flex:1}
