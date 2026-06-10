@@ -137,6 +137,10 @@ ALLOWED_HOSTS = ['*']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://portfolio-dccu.onrender.com",
+]
+
 
 EMAIL_BACKEND       = config('EMAIL_BACKEND')
 EMAIL_HOST          = config('EMAIL_HOST')
