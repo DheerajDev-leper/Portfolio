@@ -282,18 +282,21 @@ document.getElementById('sendBtn').addEventListener('click', async ()=>{
   const body=new URLSearchParams({fname:fn,lname:ln,email:em,subject:su,message:ms});
 
   try{
-    const res=await fetch('/contact/',{
-      method:'POST',
-      credentials:'same-origin',
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded',
+    const res = await fetch('/contact/', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
         'X-CSRFToken': getCsrfToken(),
-        'X-Requested-With':'XMLHttpRequest',
+        'X-Requested-With': 'XMLHttpRequest',
       },
       body: body.toString(),
     });
 
-    const data=await res.json();
+    const text = await res.text();
+    console.log(text);
+
+    const data = JSON.parse(text);
 
     if(data.status==='success'){
       /* Show success state */
