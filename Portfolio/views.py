@@ -15,6 +15,27 @@ def home(request):
 
 @require_POST
 def contact(request):
+    from django.conf import settings
+
+    try:
+        send_mail(
+            subject="Test Email",
+            message="This is a test email from Render",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.CONTACT_RECIPIENT_EMAIL],
+            fail_silently=False,
+        )
+
+        return JsonResponse({
+            "status": "success",
+            "message": "Email sent successfully!"
+        })
+
+    except Exception as e:
+        return JsonResponse({
+            "status": "error",
+            "message": str(e)
+        }, status=500)
     return JsonResponse({
         "status": "success",
         "message": "Contact endpoint works"
