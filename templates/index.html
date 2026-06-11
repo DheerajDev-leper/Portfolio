@@ -296,6 +296,7 @@
           <p class="form-sub">I'll get back to you as soon as possible.</p>
           <div class="falert falert-err" id="falert"></div>
           <div class="ffields">
+            {% csrf_token %}
             <div class="frow">
               <div class="fg"><label>First Name</label><input type="text" id="fname" class="fi" placeholder="John"/></div>
               <div class="fg"><label>Last Name</label><input type="text" id="lname" class="fi" placeholder="Doe"/></div>

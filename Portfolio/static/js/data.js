@@ -284,6 +284,7 @@ document.getElementById('sendBtn').addEventListener('click', async ()=>{
   try{
     const res=await fetch('/contact/',{
       method:'POST',
+      credentials:'same-origin',
       headers:{
         'Content-Type':'application/x-www-form-urlencoded',
         'X-CSRFToken': getCsrfToken(),

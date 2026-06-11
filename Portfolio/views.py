@@ -5,8 +5,9 @@ from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from Portfolio import settings
+from django.views.decorators.csrf import ensure_csrf_cookie
 
-
+@ensure_csrf_cookie
 def home(request):
     """Serves the single-page portfolio."""
     return render(request, 'index.html')
