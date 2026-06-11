@@ -15,6 +15,10 @@ def home(request):
 
 @require_POST
 def contact(request):
+    return JsonResponse({
+        "status": "success",
+        "message": "Contact endpoint works"
+    })
     first_name = request.POST.get("fname", "").strip()
     last_name = request.POST.get("lname", "").strip()
     email = request.POST.get("email", "").strip()
