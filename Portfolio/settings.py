@@ -154,13 +154,13 @@ CSRF_TRUSTED_ORIGINS = [
 # CONTACT_RECIPIENT_EMAIL = config('CONTACT_RECIPIENT_EMAIL')
 
 
-EMAIL_BACKEND= django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST=smtp.gmail.com
+EMAIL_BACKEND= 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER=dheerajmal9322@gmail.com
-EMAIL_HOST_PASSWORD=yhcv llpy bmnv hkev   # Use an App Password, not your real password
-DEFAULT_FROM_EMAIL=dheerajmal9322@gmail.com
-CONTACT_RECIPIENT_EMAIL=dheerajmal9322@gmail.com
+EMAIL_HOST_USER='dheerajmal9322@gmail.com'
+EMAIL_HOST_PASSWORD='yhcv llpy bmnv hkev'   # Use an App Password, not your real password
+DEFAULT_FROM_EMAIL='dheerajmal9322@gmail.com'
+CONTACT_RECIPIENT_EMAIL='dheerajmal9322@gmail.com'
 
 SECRET_KEY='django-insecure-^2iy58lfgvg@h27ge9nbkimn#l^4@ri*g9-v9o#)=0a3980i7q'
