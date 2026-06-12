@@ -163,4 +163,4 @@ EMAIL_HOST_PASSWORD=yhcv llpy bmnv hkev   # Use an App Password, not your real p
 DEFAULT_FROM_EMAIL=dheerajmal9322@gmail.com
 CONTACT_RECIPIENT_EMAIL=dheerajmal9322@gmail.com
 
-SECRET_KEY=django-insecure-^2iy58lfgvg@h27ge9nbkimn#l^4@ri*g9-v9o#)=0a3980i7q
+SECRET_KEY='django-insecure-^2iy58lfgvg@h27ge9nbkimn#l^4@ri*g9-v9o#)=0a3980i7q'
