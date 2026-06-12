@@ -139,6 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
     "https://portfolio-dccu.onrender.com",
+    "https://www.portfolio-dccu.onrender.com",
 ]
 
 

@@ -248,14 +248,9 @@ document.querySelectorAll('.sc').forEach(c=>{
   });
 });
 /* Read Django CSRF token from the cookie (set automatically by Django) */
-function getCsrfToken(){
-  const name='csrftoken';
-  const cookies=document.cookie.split(';');
-  for(let c of cookies){
-    c=c.trim();
-    if(c.startsWith(name+'=')) return decodeURIComponent(c.slice(name.length+1));
-  }
-  return '';
+function getCsrfToken() {
+  const el = document.querySelector('[name=csrfmiddlewaretoken]');
+  return el ? el.value : '';
 }
 
 document.getElementById('sendBtn').addEventListener('click', async ()=>{
