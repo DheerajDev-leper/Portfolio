@@ -22,7 +22,7 @@ def contact(request):
     subject    = request.POST.get('subject', '').strip()
     message    = request.POST.get('message', '').strip()
 
-    # ── Validation ──────────────────────────────────────────────
+    # ── 1. Validation ───────────────────────────────────────────
     if not all([first_name, last_name, email, subject, message]):
         return JsonResponse({
             'status': 'error',
@@ -37,7 +37,7 @@ def contact(request):
             'message': 'Please enter a valid email address.',
         }, status=400)
 
-    # ── Construct Email Payload ──────────────────────────────────
+    # ── 2. Construct Email Payload ──────────────────────────────
     full_message = (
         f"Name   : {first_name} {last_name}\n"
         f"From   : {email}\n"
@@ -46,7 +46,7 @@ def contact(request):
         f"{message}"
     )
 
-    # ── Attempt to Dispatch Email ────────────────────────────────
+    # ── 3. Attempt to Dispatch Email ────────────────────────────
     try:
         msg = EmailMessage(
             subject=f"[Portfolio] {subject}",
@@ -61,7 +61,7 @@ def contact(request):
             'message': 'Message sent successfully!'
         })
     except Exception as e:
-        # This catches the real backend mail failure and passes it to your console log
+        # This catches the backend connection crash and passes the text description to your front-end console
         return JsonResponse({
             'status': 'error',
             'message': f'Mail Server Error: {str(e)}'
