@@ -59,3 +59,16 @@ def contact(request):
             'status': 'error',
             'message': f'Something went wrong: {str(e)}',
         }, status=500)
+
+
+def debug_check(request):
+    from django.conf import settings
+    return JsonResponse({
+        'EMAIL_BACKEND': settings.EMAIL_BACKEND,
+        'EMAIL_HOST': settings.EMAIL_HOST,
+        'EMAIL_PORT': settings.EMAIL_PORT,
+        'EMAIL_USE_TLS': settings.EMAIL_USE_TLS,
+        'EMAIL_HOST_USER': settings.EMAIL_HOST_USER,
+        'EMAIL_HOST_PASSWORD': '***' if settings.EMAIL_HOST_PASSWORD else 'MISSING',
+        'CONTACT_RECIPIENT_EMAIL': settings.CONTACT_RECIPIENT_EMAIL,
+    })
