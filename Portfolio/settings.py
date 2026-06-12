@@ -130,7 +130,12 @@ STORAGES = {
     },
 }
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'portfolio-dccu.onrender.com',
+    'www.portfolio-dccu.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
