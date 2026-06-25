@@ -131,10 +131,11 @@ STORAGES = {
 }
 
 ALLOWED_HOSTS = [
-    'portfolio-dccu.onrender.com',
-    'www.portfolio-dccu.onrender.com',
-    'localhost',
-    '127.0.0.1',
+    "portfolio-dccu.onrender.com",
+    "www.portfolio-dccu.onrender.com",
+    "127.0.0.1",
+    "localhost",
+
 ]
 
 # Default primary key field type
@@ -151,7 +152,7 @@ CSRF_TRUSTED_ORIGINS = [
 EMAIL_BACKEND       = config('EMAIL_BACKEND')
 EMAIL_HOST          = config('EMAIL_HOST')
 EMAIL_PORT          = config('EMAIL_PORT', cast=int)
-EMAIL_USE_SSL       =config('EMAIL_USE_SSL', cast=bool)
+# EMAIL_USE_SSL       =config('EMAIL_USE_SSL', cast=bool)
 EMAIL_USE_TLS       = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_HOST_USER     = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
