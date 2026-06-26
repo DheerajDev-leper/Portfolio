@@ -55,6 +55,12 @@ def contact(request):
             to=[settings.CONTACT_RECIPIENT_EMAIL],
             reply_to=[email],
         )
+
+        print("HOST:", settings.EMAIL_HOST)
+        print("PORT:", settings.EMAIL_PORT)
+        print("SSL:", settings.EMAIL_USE_SSL)
+        print("TLS:", settings.EMAIL_USE_TLS)
+        print("USER:", settings.EMAIL_HOST_USER)
         msg.send(fail_silently=False)
         return JsonResponse({
             'status': 'success',
