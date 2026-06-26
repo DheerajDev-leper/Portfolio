@@ -58,7 +58,6 @@ def contact(request):
 
         print("HOST:", settings.EMAIL_HOST)
         print("PORT:", settings.EMAIL_PORT)
-        print("SSL:", settings.EMAIL_USE_SSL)
         print("TLS:", settings.EMAIL_USE_TLS)
         print("USER:", settings.EMAIL_HOST_USER)
         msg.send(fail_silently=False)
